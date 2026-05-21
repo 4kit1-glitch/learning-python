@@ -12,21 +12,20 @@ link2 = "https://www.manyco.ltd"
 
 # getting website name annd domain
 
-def get_subsrings(text: str) -> tuple[list, int]:
-    return [text[: i] for i in range(len(text))]
-    pass
+def get_subsrings(text: str):
+    return {text[: i] for i in range(len(text))}
+
 def is_substring(string: str, text) -> bool:
     substrings = get_subsrings(text)
     return string in substrings
 
 def clean_link(link: str) -> str:
-   PREFIX = ["www.", "https://www."]   
-   for string in PREFIX:
-       if is_substring(string, link):
-           return link.removeprefix(string)
-
+    PREFIX = ["www.", "https://www."]   
+    for string in PREFIX:
+        if is_substring(string, link):
+            return link.removeprefix(string)
+    return link
+   
 print(clean_link(link1))
 print(clean_link(link2))
-       
-    
-        
+      
