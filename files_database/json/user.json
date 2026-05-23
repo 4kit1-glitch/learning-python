@@ -1,0 +1,9 @@
+{
+    "name": "kyle",
+    "favouriteNumber": 3,
+    "hobbies": ["wight lifting", "bowling", "gaming"],
+    "friends": [{
+        "name": "joey",
+        "favouriteNumber": 100
+    }]
+}
