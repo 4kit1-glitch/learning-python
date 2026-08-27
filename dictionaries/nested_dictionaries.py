@@ -35,9 +35,5 @@ childern = {
 }
 
 # working with them
-print(family.get("father").get("name"))
 
-# looping with nested dicts
-for key, value1 in family.items():
-    for value in value1.values():
-        print(key, value)
+print(childern)

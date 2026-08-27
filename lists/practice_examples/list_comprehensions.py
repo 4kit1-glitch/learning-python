@@ -27,3 +27,21 @@ def times_two(num):
 multiplied_numbers = [times_two(x) for x in numbers]
 
 print(multiplied_numbers)
+
+def hell(*nums):
+    even = [num for num in nums if num % 2 == 0]
+    if not even:
+        print("no even passed")
+        return 0
+    print(f"even passed {even}")
+    return 1
+
+name = []
+name.append(x for x in numbers if x % 2 == 0)
+print(name)
+
+
+x = "hello"
+
+s = x.split(".")
+print(s[0])
