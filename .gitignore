@@ -4,6 +4,10 @@
 *.ini
 *.cfg
 *.conf
+*.txt
+*.pyc
+*.db
+*.zip
 
 # project configuration files
 .vscode/
