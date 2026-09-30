@@ -21,7 +21,7 @@ try:
     response.raise_for_status()
     print(response.headers["Content-Type"])
     with Path(store_dir / "RomeoAndJuliet.txt").open("wb") as file:
-        for chunck in response.iter_content(10000000):
+        for chunck in response.iter_content(CHUNK_SIZE):
             file.write(chunck)
 except requests.exceptions.HTTPError as e:
     print(f"error: {e}")
