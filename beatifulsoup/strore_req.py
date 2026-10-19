@@ -1,5 +1,7 @@
+import sys
 from pathlib import Path
 import requests
+
 
 
 def save_webcontent(weburl: str, file_path: Path) -> bool:
@@ -25,3 +27,8 @@ def save_webcontent(weburl: str, file_path: Path) -> bool:
     except OSError as err:
         print(f"Failed to write to {file_path}: {err}")
         return False
+
+
+if __name__ == "__main__":
+    print("Invalid use")
+    sys.exit(1)
