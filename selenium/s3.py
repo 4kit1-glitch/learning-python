@@ -1,0 +1,48 @@
+# practicing with selenium
+
+import sys
+import time
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.common.exceptions import WebDriverException
+
+url = "https://the-internet.herokuapp.com/login"
+
+# catching web driver errors at top level since it's an external error
+try:
+    my_driver = webdriver.Firefox() # create dirver obj
+except WebDriverException as e:
+    print(f"err: {e}")
+    sys.exit(1)
+
+
+try:
+    my_driver.get(url)
+
+    # find the username element
+    user_box = my_driver.find_element(By.ID, "username")
+
+    user_box.send_keys("tomsmith")
+
+    # find passcode element
+    pass_box = my_driver.find_element(By.ID, "password")
+    pass_box.send_keys("SuperSecretPassword!")
+
+
+    # find botton and simulate click
+    submit_bt = my_driver.find_element(By.CSS_SELECTOR, "button[type=submit]")
+
+    submit_bt.click()
+
+    time.sleep(1)   # wait a while so the element can load
+
+    # comfirm login by checking for  <div data-alert id='flash' class='flash success'>You logged into a secure area!
+
+    success_banner = my_driver.find_element(By.CSS_SELECTOR, "div.flash.success")
+
+    input("Press enter to continue")
+
+except WebDriverException as e:
+    print(f"error occured \nDetails: {e}")
+    my_driver.quit()
+
