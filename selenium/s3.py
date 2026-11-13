@@ -4,7 +4,9 @@ import sys
 import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import WebDriverException
+from selenium.webdriver.support import expected_conditions as EC
 
 url = "https://the-internet.herokuapp.com/login"
 
@@ -34,7 +36,10 @@ try:
 
     submit_bt.click()
 
-    time.sleep(1)   # wait a while so the element can load
+    success_banner = WebDriverWait(my_driver, 10).until(
+        EC.presence_of_element_located((By.CLASS_NAME, "flash.success"))
+    )
+    print("Login successful:", success_banner.text)
 
     # comfirm login by checking for  <div data-alert id='flash' class='flash success'>You logged into a secure area!
 
